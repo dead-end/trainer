@@ -113,14 +113,8 @@ h6 {
 
   --transition: 300ms;
 
-  --padding-x: 1.8rem;
-  --padding-y: 1.8rem;
-
-  --padding-input: 0.8rem;
-
   --gap: 1.4rem;
 
-  --font-weight-bold: 600;
   --shadow: var(--shadow-lg);
 
   /*
@@ -164,12 +158,30 @@ h6 {
   --break-point-lg: 960px;
   --break-point-xl: 1280px;
 
+  /*
+   * Font sizes anfd decorations
+   */
+  --font-size-larger: 2rem;
+  --font-size-large: 1.6rem;
+  --font-size-medium: 1rem;
+  --font-size-small: 0.9rem;
+
+  --font-weight-bold: 600;
+
+  /*
+  * Paddings
+  */
+  --padding-x: 1.8rem;
+  --padding-y: 1.8rem;
+
+  --padding-input: 0.8rem;
+
   --table-padding-x: 1rem;
 }
 
 * {
   font-family: Verdana, sans-serif;
-  font-size: medium;
+  font-size: var(--font-size-medium);
 }
 
 html {
@@ -199,12 +211,12 @@ body {
 
 .page-title {
   font-weight: var(--font-weight-bold);
-  font-size: x-large;
+  font-size: var(--font-size-large);
 }
 
 footer {
   text-align: right;
-  font-size: small;
+  font-size: var(--font-size-small);
 
   border-top: var(--border);
 
@@ -363,16 +375,28 @@ textarea:read-only,
   color: var(--color-error);
 }
 
-.is-text-small {
-  font-size: small;
-}
-
 .is-text-bold {
   font-weight: var(--font-weight-bold);
 }
 
 .is-text-reverse {
   color: var(--color-reverse);
+}
+
+.is-text-larger {
+  font-size: var(--font-size-larger);
+}
+
+.is-text-large {
+  font-size: var(--font-size-large);
+}
+
+.is-text-medium {
+  font-size: var(--font-size-medium);
+}
+
+.is-text-small {
+  font-size: var(--font-size-small);
 }
 
 /******************************************************************************
@@ -444,56 +468,6 @@ tr:hover {
 }
 
 /******************************************************************************
- * Defintion of the header tags
- *****************************************************************************/
-
-h1,
-.h1,
-h2,
-.h2,
-h3,
-.h3,
-h4,
-.h4,
-h5,
-.h5,
-h6,
-.h6 {
-  line-height: 1.2;
-  font-weight: var(--font-weight-bold);
-}
-
-h1,
-.h1 {
-  font-size: 2rem;
-}
-
-h2,
-.h2 {
-  font-size: 1.6rem;
-}
-
-h3,
-.h3 {
-  font-size: 1.4rem;
-}
-
-h4,
-.h4 {
-  font-size: 1.2rem;
-}
-
-h5,
-.h5 {
-  font-size: 1rem;
-}
-
-h6,
-.h6 {
-  font-size: 0.8rem;
-}
-
-/******************************************************************************
  * Definition of the container and the grid.
  * 
  * The definition contains hide-xx classes. The component is shown if the 
@@ -545,6 +519,9 @@ h6,
     --table-padding-x: 0rem;
     --padding-x: 0.4rem;
     --padding-y: 0.4rem;
+
+    --font-size-larger: 1.2rem;
+    --font-size-large: 1rem;
   }
 }
 `,ie=new CSSStyleSheet;ie.replace($e);const ce=new CSSStyleSheet;ce.replace(Te);const C=[ie,ce],S=n=>{const t=new CustomEvent("error-msg",{detail:n});document.dispatchEvent(t)};class d extends Error{constructor(t){super(t),S(t)}}const oe=2,Ie=n=>{n.objectStoreNames.contains("cache")||n.createObjectStore("cache",{keyPath:"path"}),n.objectStoreNames.contains("search")||n.createObjectStore("search",{keyPath:"path"}),n.objectStoreNames.contains("admin")||n.createObjectStore("admin",{keyPath:"id"})},Re=()=>new Promise((n,t)=>{const e=indexedDB.open("trainer",oe);e.onupgradeneeded=o=>{const s=e.result;o.oldVersion<oe&&Ie(s),console.log("db upgrade success!")},e.onerror=o=>{console.error(o.type),t()},e.onsuccess=()=>{const o=e.result;o.onerror=s=>{console.log(s.type)},console.log("db init success!"),n(o)}}),O=Re(),wt=async(n,t)=>(await O).transaction([n],t).objectStore(n),bt=(n,t)=>new Promise((e,o)=>{const s=n.get(t);s.onsuccess=()=>{console.log("Store:",n.name,"id:",t,"get:",s.result?s.result:"NOT-FOUND"),e(s.result)},s.onerror=a=>{S(`Store: ${n.name} id: ${t} storeGet error: ${a}`),o()}}),St=(n,t)=>new Promise((e,o)=>{const s=n.put(t);s.onsuccess=()=>{console.log("Store:",n.name,"put:",t),e(t)},s.onerror=a=>{S(`Store: ${n.name} put: ${t} error: ${a}`),o()}}),Lt=(n,t)=>new Promise((e,o)=>{const s=n.delete(t);s.onsuccess=()=>{console.log("Store:",n.name,"delete:",t),e(s.result)},s.onerror=a=>{S(`Store: ${n.name} delete: ${t} error: ${a}`),o()}}),le=n=>new Promise((t,e)=>{const o=n.getAll();o.onsuccess=()=>{console.log("Store:",n.name,"get all"),t(o.result)},o.onerror=s=>{S(`Store: ${n.name} get all: ${s}`),e()}}),kt="admin",f=async()=>{const n=await wt(kt,"readonly"),t=await bt(n,"github");if(t===void 0)throw new Error("Unable to get github config.");return t},Me=async()=>{const n=await wt(kt,"readonly");return bt(n,"github")},De=async n=>{const t=await wt(kt,"readwrite");return St(t,n)},qe=async n=>{const t=await wt(kt,"readwrite");return Lt(t,n)},de="github";let W=Me();const Pe=async()=>{document.dispatchEvent(await W?new Event("login"):new Event("logout"))},Oe=async()=>await W!==void 0,He=async(n,t,e)=>{W=De({id:de,user:n,repo:t,token:e}),document.dispatchEvent(new Event("login"))},Ne=async()=>{await W&&(W=qe(de),document.dispatchEvent(new Event("logout")))},r=(n,t)=>{t||(t=document);const e=t.querySelector(n);if(!e)throw new Error(`Unable to find: ${n}`);return e},yt=(n,t)=>{t||(t=document);const e=[...t.querySelectorAll(n)];if(e.length===0)throw new Error(`Unable to find: ${n}`);return e},he=[];let Y,ue,$t,pe;const x=n=>{if(!Y||!Y.groups){const t=`Route parameter: ${n} - No parameters found: ${window.location.hash}`;throw new Error(t)}return Y.groups[n]},q=(...n)=>n.map(t=>x(t)),se=async()=>{let n=window.location.hash||ue;if(!await Oe()&&n!==$t){window.location.hash=$t;return}const t=he.find(s=>s.regex.test(n));t&&(Y=t.regex.exec(window.location.hash));const e=t?t.page:pe,o=document.createElement(e);r("main").replaceChildren(o)},w=(n,t)=>{he.push({regex:n,page:t})},je=(n,t,e)=>{ue=n,$t=t,pe=e,window.addEventListener("hashchange",se),window.addEventListener("DOMContentLoaded",se)},u=n=>n.content.cloneNode(!0),H=class H extends HTMLElement{connectedCallback(){if(!this.shadowRoot){const t=this.getAttribute("data-icon")||"login",e=u(H.TMPL),o=u(H.ICONS[t]);e.appendChild(o);const s=this.attachShadow({mode:"open"});s.adoptedStyleSheets=C,s.appendChild(e)}}};l(H,"ICONS",{logout:r("#tmpl-icon-logout"),home:r("#tmpl-icon-home"),admin:r("#tmpl-icon-admin"),book:r("#tmpl-icon-book"),delete:r("#tmpl-icon-delete"),update:r("#tmpl-icon-update"),list:r("#tmpl-icon-list"),start:r("#tmpl-icon-start"),cache:r("#tmpl-icon-cache"),search:r("#tmpl-icon-search")}),l(H,"TMPL",r("#tmpl-icon"));let Tt=H;const X=class X extends HTMLElement{connectedCallback(){if(!this.shadowRoot){const t=u(X.TMPL);r("#logout",t).onclick=this.doLogout;const e=this.attachShadow({mode:"open"});e.adoptedStyleSheets=C,e.appendChild(t),document.addEventListener("login",this.onLogin.bind(this)),document.addEventListener("logout",this.onLogout.bind(this))}}onLogin(){this.shadowRoot&&(r("#nav-items",this.shadowRoot).style.visibility="visible")}onLogout(){this.shadowRoot&&(r("#nav-items",this.shadowRoot).style.visibility="hidden")}doLogout(){Ne()}};l(X,"TMPL",r("#tmpl-navigation"));let It=X;const K=class K extends HTMLElement{connectedCallback(){if(!this.shadowRoot){const t=u(K.TMPL);r("#error-btn",t).onclick=this.onOk.bind(this);const e=this.attachShadow({mode:"open"});e.adoptedStyleSheets=C,e.appendChild(t),document.addEventListener("error-msg",this.onError.bind(this)),this.style.display="none"}}onError(t){if(this.shadowRoot){const e=t.detail;r("#error-msg",this.shadowRoot).textContent=e,this.style.display="block"}}onOk(){this.shadowRoot&&(r("#error-msg",this.shadowRoot).textContent="",this.style.display="none")}};l(K,"TMPL",r("#tmpl-error"));let Rt=K;const Ae=new RegExp(/[<>]/,"g"),ze=[{pattern:new RegExp(/^- (.+)=#/,"g"),replace:'<span class="md-right">&bull;</span><span class="md-it">$1</span>'},{pattern:new RegExp(/^(.+)=#/,"g"),replace:'<span class="md-it">$1</span>'},{pattern:new RegExp(/#=(.+)$/,"g"),replace:'<span class="md-it">$1</span>'},{pattern:new RegExp(/^- /,"g"),replace:'<span class="md-right">&bull;</span>'}],Ue=[{pattern:new RegExp(/#([^#]+)#/,"g"),replace:'<span class="md-it">$1</span>'},{pattern:new RegExp(/\*\*(.)/,"g"),replace:'<span class="md-em">$1</span>'},{pattern:new RegExp(/\*([^*]+)\*/,"g"),replace:'<span class="md-em">$1</span>'}],ae=(n,t)=>(n.forEach(e=>{t=t.replaceAll(e.pattern,e.replace)}),t),Z=n=>{const t=n.replace(Ae,"").split(`
