@@ -193,6 +193,7 @@ body {
     var(--bg-gradient-from),
     var(--bg-gradient-to)
   );
+  background-attachment: fixed;
 }
 
 #app {
