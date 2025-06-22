@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vanilla Trainer</title>
-    <script type="module" crossorigin src="/trainer/assets/index-CyDBHB_5.js"></script>
+    <script type="module" crossorigin src="/trainer/assets/index-C_5FRIKd.js"></script>
   </head>
 
   <body>
@@ -52,7 +52,8 @@
         <input id="token" name="token" type="password" />
       </ui-field>
       <div class="is-row is-gap">
-        <button class="btn" type="submit">Save</button>
+        <button id="admin-edit" class="btn" type="button">Edit</button>
+        <button id="admin-save" class="btn" type="submit">Save</button>
       </div>
     </form>
   </div>
@@ -208,7 +209,7 @@
     <template id="chapter-list-page">
   <div class="is-column is-gap">
     <div class="page-title">Chapter List</div>
-    <key-values id="book-info" type="line"></key-values>
+    <key-values id="book-info"></key-values>
     <table>
       <thead>
         <tr>
@@ -282,7 +283,7 @@
     <template id="question-list-page">
   <div class="is-column is-gap">
     <div class="page-title">Question List</div>
-    <key-values id="chapter-info" type="line"></key-values>
+    <key-values id="chapter-info"></key-values>
     <div data-id="questions"></div>
     <div class="is-row is-gap-action">
       <a href="#" class="btn" id="chapter-list-link">Chapters</a>
@@ -357,7 +358,7 @@
   <div class="is-column is-gap">
     <div class="page-title">Lession prepare</div>
 
-    <key-values id="lession-info" type="line"></key-values>
+    <key-values id="lession-info"></key-values>
 
     <form class="is-column is-gap">
       <ui-field data-id="correct" data-label="Correct Answers">
@@ -387,10 +388,8 @@
   <div class="is-column is-gap">
     <div class="page-title">Lession Process</div>
 
-    <div class="is-row is-gap">
-      <key-values id="question-info" type="table"></key-values>
-      <key-values id="progress-info" type="table"></key-values>
-    </div>
+    <key-values id="question-info"></key-values>
+    <key-values id="progress-info"></key-values>
 
     <question-show id="question-show" data-show="running"></question-show>
 
@@ -406,7 +405,7 @@
 </template>
 
 
-    <template id="tmpl-key-values-line">
+    <template id="tmpl-key-values">
   <style>
     /* TODO: works not for the font*/
     .key {
@@ -416,26 +415,21 @@
       font-style: italic;
       color: var(--color-primary);
     }
+
+    .wrapper {
+      display: grid;
+      grid-gap: var(--gap-small);
+      grid-template-columns: 1fr 1fr 1fr;
+    }
   </style>
-  <div id="wrapper" class="is-row is-gap-small"></div>
+  <div id="wrapper" class="wrapper"></div>
 </template>
 
 <template id="tmpl-key-values-entry">
-  <div>
-    <span class="key" data-id="key"></span>
-    <span class="value" data-id="value"></span>
+  <div class="is-row is-gap-small">
+    <div class="key" data-id="key"></div>
+    <div class="value" data-id="value"></div>
   </div>
-</template>
-
-<template id="tmpl-key-values-table">
-  <table id="wrapper" class="dense"></table>
-</template>
-
-<template id="tmpl-key-values-row">
-  <tr>
-    <td data-id="key"></td>
-    <td data-id="value"></td>
-  </tr>
 </template>
 
     <template id="tmpl-ui-field">
@@ -741,7 +735,10 @@
   <div class="is-column is-gap-small">
     <div class="is-grid-3">
       <div class="is-column">
-        <div class="label" id="label">Question</div>
+        <div class="is-row is-space-between">
+          <div class="label" id="label">Question</div>
+          <div id="progress">Progress</div>
+        </div>
         <div
           id="quest"
           class="is-border is-shadow is-padding-input is-multiline is-grow"
