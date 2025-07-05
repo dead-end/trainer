@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vanilla Trainer</title>
-    <script type="module" crossorigin src="/trainer/assets/index-CUFHpxgo.js"></script>
+    <script type="module" crossorigin src="/trainer/assets/index-BT4CheOf.js"></script>
   </head>
 
   <body>
@@ -413,14 +413,6 @@
 
     <template id="tmpl-key-values">
   <style>
-    .key {
-      font-weight: 500;
-    }
-    .value {
-      font-style: italic;
-      color: var(--color-primary);
-    }
-
     .wrapper {
       display: grid;
       grid-gap: var(--gap-small);
@@ -432,8 +424,8 @@
 
 <template id="tmpl-key-values-entry">
   <div class="is-row is-gap-small">
-    <div class="key" data-id="key"></div>
-    <div class="value" data-id="value"></div>
+    <div class="is-key" data-id="key"></div>
+    <div class="is-value" data-id="value"></div>
   </div>
 </template>
 
@@ -788,7 +780,11 @@
   </style>
 
   <div class="is-column is-gap-small" id="wrapper" style="display: none">
-    <div class="is-text-bold" id="path"></div>
+    <div class="is-text-bold" id="title"></div>
+    <div>
+      <span class="is-key">Path</span>
+      <span class="is-value" id="path"></span>
+    </div>
     <code class="is-border is-shadow is-padding-input" id="content"></code>
   </div>
 </template>
