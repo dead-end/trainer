@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vanilla Trainer</title>
-    <script type="module" crossorigin src="/trainer/assets/index-BT4CheOf.js"></script>
+    <script type="module" crossorigin src="/trainer/assets/index-BhhVPIkm.js"></script>
   </head>
 
   <body>
@@ -23,10 +23,7 @@
     <template id="index-page">
   <div class="is-column is-gap">
     <div class="page-title">Welcome to Vanilla Trainer</div>
-    <div class="is-row is-gap" id="lession">
-      <button class="btn" id="btn-continue">Continue</button>
-      <button class="btn" id="btn-end">End</button>
-    </div>
+    <lession-continue></lession-continue>
   </div>
 </template>
 
@@ -786,6 +783,13 @@
       <span class="is-value" id="path"></span>
     </div>
     <code class="is-border is-shadow is-padding-input" id="content"></code>
+  </div>
+</template>
+
+    <template id="tmpl-lession-continue">
+  <div class="is-row is-gap">
+    <button class="btn" id="btn-continue">Continue</button>
+    <button class="btn" id="btn-end">End</button>
   </div>
 </template>
 
