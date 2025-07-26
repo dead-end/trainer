@@ -272,7 +272,7 @@ select {
 }
 
 select {
-  -webkit-appearance: caret;
+  -webkit-appearance: menulist-button;
 }
 
 input:focus,
