@@ -269,8 +269,9 @@ select {
   transition: var(--transition);
 
   outline: none;
-
+  /*
   -webkit-appearance: initial;
+  */
 }
 
 input:focus,
