@@ -270,15 +270,9 @@ select {
 
   outline: none;
 }
-/*
+
 select {
   -webkit-appearance: initial;
-}
-  */
-
-select,
-::picker(select) {
-  appearance: base-select;
 }
 
 input:focus,
