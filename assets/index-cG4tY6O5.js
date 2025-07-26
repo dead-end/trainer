@@ -269,9 +269,10 @@ select {
   transition: var(--transition);
 
   outline: none;
-  /*
-  -webkit-appearance: initial;
-  */
+}
+
+select {
+  -webkit-appearance: caret;
 }
 
 input:focus,
