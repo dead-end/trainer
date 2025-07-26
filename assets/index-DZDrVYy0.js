@@ -272,7 +272,7 @@ select {
 }
 
 select {
-  -webkit-appearance: none;
+  -webkit-appearance: initial;
 }
 
 input:focus,
