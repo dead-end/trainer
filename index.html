@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <title>Vanilla Trainer</title>
-    <script type="module" crossorigin src="/trainer/assets/index-DZDrVYy0.js"></script>
+    <script type="module" crossorigin src="/trainer/assets/index-DoaLqlM_.js"></script>
   </head>
 
   <body>
@@ -34,80 +34,6 @@
 </template>
 
 
-    <template id="admin-page">
-  <div class="is-column is-gap">
-    <div class="page-title">Administration</div>
-    <form class="is-column is-gap">
-      <ui-field data-id="user" data-label="Github User">
-        <input id="user" name="user" type="text" />
-      </ui-field>
-
-      <ui-field data-id="repo" data-label="Github Repository">
-        <input id="repo" name="repo" type="text" />
-      </ui-field>
-
-      <ui-field data-id="token" data-label="Token">
-        <input id="token" name="token" type="password" />
-      </ui-field>
-      <div class="is-row is-gap">
-        <button id="admin-edit" class="btn" type="button">Edit</button>
-        <button id="admin-save" class="btn" type="submit">Save</button>
-      </div>
-    </form>
-  </div>
-</template>
-
-
-    <template id="cache-page">
-  <div class="is-column is-gap">
-    <div class="page-title">Cache Entries</div>
-    <table>
-      <thead>
-        <tr>
-          <th>Path</th>
-          <th>Cache Hash</th>
-          <th>Search Hash</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-    <div class="is-row is-gap">
-      <a href="#/books" class="btn">Books</a>
-      <button id="cache-load" class="btn">Load</button>
-      <button id="cache-check" class="btn">Check</button>
-    </div>
-  </div>
-</template>
-
-<template id="tmpl-cache-list">
-  <tr>
-    <td data-id="path">path</td>
-    <td data-id="cache-hash">cache-hash</td>
-    <td data-id="search-hash">search-hash</td>
-    <td data-id="actions">
-      <div class="is-row is-gap-action">
-        <ui-icons data-icon="delete"></ui-icons>
-      </div>
-    </td>
-  </tr>
-</template>
-
-    <template id="cache-raw-page">
-  <div class="is-column is-gap">
-    <div class="page-title">Cache Raw</div>
-    <location-info id="location-info"></location-info>
-
-    <json-show id="cache"></json-show>
-    <json-show id="search"></json-show>
-
-    <div class="is-row is-gap">
-      <button class="btn" id="btn-cancel">Back</button>
-    </div>
-  </div>
-</template>
-
-
     <template id="search-page">
   <div class="is-column is-gap">
     <div class="page-title">Search</div>
@@ -122,50 +48,6 @@
     </form>
     <div data-id="num" class="is-text-bold is-text-right is-text-small"></div>
     <div data-id="questions"></div>
-  </div>
-</template>
-
-
-    <template id="book-create-page">
-  <div class="is-column is-gap">
-    <div class="page-title">Create Book</div>
-    <form class="is-column is-gap">
-      <ui-field data-id="id" data-label="Id">
-        <input id="id" name="id" type="text" />
-      </ui-field>
-      <ui-field data-id="title" data-label="Title">
-        <input id="title" name="title" type="text" />
-      </ui-field>
-      <ui-field data-id="desc" data-label="Description">
-        <textarea id="desc" name="desc" rows="4"></textarea>
-      </ui-field>
-      <div class="is-row is-gap">
-        <a href="#/books" class="btn">Cancel</a>
-        <button class="btn" type="submit">Create</button>
-      </div>
-    </form>
-  </div>
-</template>
-
-    <template id="book-update-page">
-  <div class="is-column is-gap">
-    <div class="page-title">Update Book</div>
-    <location-info id="location-info"></location-info>
-    <form class="is-column is-gap">
-      <ui-field data-id="id" data-label="Id">
-        <input id="id" name="id" type="text" readonly />
-      </ui-field>
-      <ui-field data-id="title" data-label="Title">
-        <input id="title" name="title" type="text" />
-      </ui-field>
-      <ui-field data-id="desc" data-label="Description">
-        <textarea id="desc" name="desc" rows="4"></textarea>
-      </ui-field>
-      <div class="is-row is-gap">
-        <a href="#/books" class="btn">Cancel</a>
-        <button class="btn" type="submit">Update</button>
-      </div>
-    </form>
   </div>
 </template>
 
@@ -318,57 +200,6 @@
         <button class="btn" type="submit" id="btn-submit">Update</button>
       </div>
     </form>
-  </div>
-</template>
-
-
-    <template id="lession-prepare-page">
-  <div class="is-column is-gap">
-    <div class="page-title">Lession prepare</div>
-
-    <key-values id="lession-info"></key-values>
-
-    <form class="is-column is-gap">
-      <ui-field data-id="correct" data-label="Correct Answers">
-        <select name="correct" id="correct">
-          <option value="0">0</option>
-          <option value="1" selected>1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-        </select>
-      </ui-field>
-      <ui-field data-id="reverse" data-label="Reverse Answers">
-        <select name="reverse" id="reverse">
-          <option value="true">True</option>
-          <option value="false" selected>False</option>
-        </select>
-      </ui-field>
-
-      <div class="is-row is-gap">
-        <a href="#" class="btn" id="chapter-list-link">Cancel</a>
-        <button class="btn" type="submit" id="btn-start">Start</button>
-      </div>
-    </form>
-  </div>
-</template>
-
-    <template id="lession-process-page">
-  <div class="is-column is-gap">
-    <div class="page-title">Lession Process</div>
-
-    <location-info id="location-info"></location-info>
-    <key-values id="progress-info"></key-values>
-
-    <question-show id="question-show" data-show="running"></question-show>
-
-    <div class="is-row is-gap">
-      <button class="btn" id="btn-correct" data-show="show">Correct</button>
-      <button class="btn" id="btn-wrong" data-show="show">Wrong</button>
-      <button class="btn" id="btn-skip" data-show="show">Skip</button>
-      <button class="btn" id="btn-learned" data-show="show">Learned</button>
-      <button class="btn" id="btn-show" data-show="ask">Show</button>
-      <button class="btn" id="btn-stop">End</button>
-    </div>
   </div>
 </template>
 
