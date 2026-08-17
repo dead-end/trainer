@@ -283,8 +283,8 @@ select {
 
 input[type='checkbox'] {
   min-width: 0;
-  width: 1.3rem;
-  height: 1.3rem;
+  width: 1.1rem;
+  height: 1.1rem;
 }
 
 /*
